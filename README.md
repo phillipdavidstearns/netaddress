@@ -31,7 +31,7 @@ If you run `netaddress` without arguments, it'll print basic usage instructions 
 
 ```
 
-Usage: netaddress [-hiIrRsSbBpc46m] [interface]
+Usage: netaddress [-hlLrRsSbBpc46m] [interface]
 
 
 A simple tool to retrieve network addresses
@@ -58,10 +58,10 @@ Basic usage is to run the command `wifitats [interface]` and get all the address
 user$ netaddress en0
 
 
-[+] Local IPv4 Address: 172.X.X.X
-[+] Router IPv4 Address: 172.X.X.254
+[+] Local IPv4 Address: 192.X.X.X
+[+] Router IPv4 Address: 192.X.X.254
 [+] Subnet Mask: 255.X.X.X
-[+] Broadcast IPv4 Address: 172.X.X.255
+[+] Broadcast IPv4 Address: 192.X.X.255
 [+] Hardware MAC Address: XX:XX:XX:XX:XX:XX
 [+] Current MAC Address: XX:XX:XX:XX:XX:XX
 
@@ -76,16 +76,16 @@ user$ netaddress -m en0
 user$ netaddress -l en0
 
 
-[+] Local IPv4 Address: 172.X.X.X
+[+] Local IPv4 Address: 192.X.X.X
 
 
 user$ netaddress -4 en0
 
 
-[+] Local IPv4 Address: 172.X.X.X
-[+] Router IPv4 Address: 172.X.X.254
+[+] Local IPv4 Address: 192.X.X.X
+[+] Router IPv4 Address: 192.X.X.254
 [+] Subnet Mask: 255.X.X.X
-[+] Broadcast IPv4 Address: 172.X.X.255
+[+] Broadcast IPv4 Address: 192.X.X.255
 
 
 ```
