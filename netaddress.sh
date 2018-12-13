@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#   wifistats.sh
+#   netaddress.sh
 #   a script to easily find usefull wireless network addresses
 #   made for Mac OSX 10.13+
 #   dependencies: networksetup, ifconfig, ipconfig
@@ -40,7 +40,7 @@ m=false
 all=true
 
 function usage {
-	echo "Usage: wifistats [-hlLrRsSbBpc46m] [interface]"
+	echo "Usage: netaddress [-hlLrRsSbBpc46m] [interface]"
 }
 
 function help {
