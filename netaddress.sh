@@ -44,11 +44,11 @@ function usage {
 }
 
 function help {
-	echo -e "\n"
+	echo -e "\r"
 	usage
-	echo -e "\n"
+	echo -e "\r"
     echo "A simple tool to retrieve network addresses"
-    echo -e "\n"
+    echo -e "\r"
 	echo "IPv4"
     echo -e "\t-4\t\tall IPv4 address info"
     echo -e "\t-l\t\tlocal IP"
@@ -64,7 +64,7 @@ function help {
     echo -e "\t-m\t\tall MAC address info"
 	echo -e "\t-c\t\tcurrent MAC"
 	echo -e "\t-p\t\tpermanent MAC"
-	echo -e "\n"
+	echo -e "\r"
 }
 
 #arguments must be provided
@@ -141,7 +141,7 @@ else
     exit 1
 fi
 
-echo -e "\n"
+echo -e "\r"
 
 # IPv4 Addresses
 
@@ -181,7 +181,7 @@ if [ "$all" = "true" -o "$m" = "true" -o "$c" = "true" ]; then
     echo "[+] Current MAC Address: $current_MAC"
 fi
 
-echo -e "\n"
+echo -e "\r"
 
 exit 0
 
