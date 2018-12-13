@@ -50,7 +50,7 @@ MAC
 	
 ```
 
-Basic usage is to run the command `wifitats [interface]` and get all the addresses for the specified interface. Right now, only IPv4 and MAC addresses are available. IPv6 will be added in the future.
+Basic usage is to run the command `netaddress [interface]` and get all the addresses for the specified interface. Right now, only IPv4 and MAC addresses are available. IPv6 will be added in the future.
 
 ### Examples:
 
