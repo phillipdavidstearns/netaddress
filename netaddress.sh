@@ -20,11 +20,11 @@
 #[B] IPv6 Broadcast Address
 
 #individually select
-i=false
+l=false
 r=false
 s=false
 b=false
-#I=false
+#L=false
 #R=false
 #S=false
 #B=false
@@ -40,7 +40,7 @@ m=false
 all=true
 
 function usage {
-	echo "Usage: wifistats [-hiIrRsSbBpc46m] [interface]"
+	echo "Usage: wifistats [-hlLrRsSbBpc46m] [interface]"
 }
 
 function help {
@@ -51,12 +51,12 @@ function help {
     echo -e "\n"
 	echo "IPv4"
     echo -e "\t-4\t\tall IPv4 address info"
-    echo -e "\t-i\t\tlocal IP"
+    echo -e "\t-l\t\tlocal IP"
 	echo -e "\t-r\t\trouter IP"
 	echo -e "\t-s\t\tsubnet mask"
 	echo -e "\t-b\t\tbroadcast address"
 #    echo "IPv6"
-#    echo -e "\t-I\t\tlocal IP"
+#    echo -e "\t-L\t\tlocal IP"
 #    echo -e "\t-R\t\trouter IP"
 #    echo -e "\t-S\t\tsubnet mask"
 #    echo -e "\t-B\t\tbroadcast address"
@@ -74,15 +74,15 @@ if [ $# = 0 ];then
 fi
 
 #check for option flags
-while getopts ":hirsbIRSBpcm46" opt; do
+while getopts ":hlrsbLRSBpcm46" opt; do
     all=false
 	case ${opt} in
 		h)
 			help
 			exit 1
 			;;
-        i)
-            i=true
+        l)
+            l=true
             ;;
         r)
             r=true
@@ -96,8 +96,8 @@ while getopts ":hirsbIRSBpcm46" opt; do
         4)
             IPv4=true
             ;;
-#        I)
-#            I=true
+#        L)
+#            L  =true
 #            ;;
 #        R)
 #            R=true
@@ -145,7 +145,7 @@ echo -e "\n"
 
 # IPv4 Addresses
 
-if [ "$all" = "true" -o "$IPv4" = "true" -o "$i" = "true" ]; then
+if [ "$all" = "true" -o "$IPv4" = "true" -o "$l" = "true" ]; then
     local_IPv4=$(ipconfig getifaddr $iface)
     echo "[+] Local IPv4 Address: $local_IPv4"
 fi
