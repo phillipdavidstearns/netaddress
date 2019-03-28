@@ -7,6 +7,7 @@
 
 #Implemented:
 #[i] IPv4 Local Address
+#[w] IPv4 Public/WAN Address
 #[r] IPv4 Router Address
 #[s] IPv4 Subnet Mask
 #[b] IPv4 Broadcast Address
@@ -24,6 +25,7 @@ l=false
 r=false
 s=false
 b=false
+w=false
 #L=false
 #R=false
 #S=false
@@ -40,18 +42,19 @@ m=false
 all=true
 
 function usage {
-	echo "Usage: netaddress [-hlLrRsSbBpc46m] [interface]"
+	echo "Usage: netaddress [-hlwrsbpc4m] [interface]"
 }
 
 function help {
 	echo -e "\r"
 	usage
 	echo -e "\r"
-    echo "A simple tool to retrieve network addresses"
-    echo -e "\r"
+	echo "A simple tool to retrieve network addresses"
+	echo -e "\r"
 	echo "IPv4"
-    echo -e "\t-4\t\tall IPv4 address info"
-    echo -e "\t-l\t\tlocal IP"
+	echo -e "\t-4\t\tall IPv4 address info"
+	echo -e "\t-l\t\tlocal IP"
+	echo -e "\t-w\t\tpublic/WAN IP address"
 	echo -e "\t-r\t\trouter IP"
 	echo -e "\t-s\t\tsubnet mask"
 	echo -e "\t-b\t\tbroadcast address"
@@ -74,7 +77,7 @@ if [ $# = 0 ];then
 fi
 
 #check for option flags
-while getopts ":hlrsbLRSBpcm46" opt; do
+while getopts ":hlwrsbpcm4" opt; do
     all=false
 	case ${opt} in
 		h)
@@ -84,6 +87,9 @@ while getopts ":hlrsbLRSBpcm46" opt; do
         l)
             l=true
             ;;
+	w)
+		w=true
+		;;
         r)
             r=true
             ;;
@@ -146,22 +152,27 @@ echo -e "\r"
 # IPv4 Addresses
 
 if [ "$all" = "true" -o "$IPv4" = "true" -o "$l" = "true" ]; then
-    local_IPv4=$(ipconfig getifaddr $iface)
+    local_IPv4="$(ipconfig getifaddr $iface)"
     echo "[+] Local IPv4 Address: $local_IPv4"
 fi
 
+if [ "$all" = "true" -o "$IPv4" = "true" -o "$w" = "true" ]; then
+    public_IPv4="$(dig +short myip.opendns.com @resolver1.opendns.com)"
+    echo "[+] Public/WAN IPv4 Address: $public_IPv4"
+fi
+
 if [ "$all" = "true" -o "$IPv4" = "true" -o "$r" = "true" ]; then
-    router_IPv4=$(ipconfig getoption $iface router)
+    router_IPv4="$(ipconfig getoption $iface router)"
     echo "[+] Router IPv4 Address: $router_IPv4"
 fi
 
 if [ "$all" = "true" -o "$IPv4" = "true" -o "$s" = "true" ]; then
-    mask_IPv4=$(ipconfig getoption $iface subnet_mask)
+    mask_IPv4="$(ipconfig getoption $iface subnet_mask)"
     echo "[+] Subnet Mask: $mask_IPv4"
 fi
 
 if [ "$all" = "true" -o "$IPv4" = "true" -o "$b" = "true" ]; then
-    broadcast_IPv4=$(ifconfig $iface | sed -n 's/^.*broadcast //p')
+    broadcast_IPv4="$(ifconfig $iface | sed -n 's/^.*broadcast //p')"
     echo "[+] Broadcast IPv4 Address: $broadcast_IPv4"
 fi
 
@@ -172,12 +183,12 @@ fi
 # MAC Addresses
 
 if [ "$all" = "true" -o "$m" = "true" -o "$p" = "true" ]; then
-    permanent_MAC=$(networksetup -getmacaddress $iface | grep -oE '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}')
+    permanent_MAC="$(networksetup -getmacaddress $iface | grep -oE '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}')"
     echo "[+] Hardware MAC Address: $permanent_MAC"
 fi
 
 if [ "$all" = "true" -o "$m" = "true" -o "$c" = "true" ]; then
-    current_MAC=$(ifconfig $iface ether | grep -oE '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}')
+    current_MAC="$(ifconfig $iface ether | grep -oE '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}')"
     echo "[+] Current MAC Address: $current_MAC"
 fi
 
