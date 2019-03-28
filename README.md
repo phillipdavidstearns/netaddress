@@ -31,7 +31,7 @@ If you run `netaddress` without arguments, it'll print basic usage instructions 
 
 ```
 
-Usage: netaddress [-hlLrRsSbBpc46m] [interface]
+Usage: netaddress [-hlrsbpc4m] [interface]
 
 
 A simple tool to retrieve network addresses
@@ -40,6 +40,7 @@ A simple tool to retrieve network addresses
 IPv4
 	-4		all IPv4 address info
 	-l		local IP
+	-w		public/WAN IPv4 address
 	-r		router IP
 	-s		subnet mask
 	-b		broadcast address
@@ -59,6 +60,7 @@ user$ netaddress en0
 
 
 [+] Local IPv4 Address: 192.X.X.X
+[+] Public/WAN IPv4 Address: X.X.X.X
 [+] Router IPv4 Address: 192.X.X.254
 [+] Subnet Mask: 255.X.X.X
 [+] Broadcast IPv4 Address: 192.X.X.255
@@ -86,6 +88,5 @@ user$ netaddress -4 en0
 [+] Router IPv4 Address: 192.X.X.254
 [+] Subnet Mask: 255.X.X.X
 [+] Broadcast IPv4 Address: 192.X.X.255
-
 
 ```
