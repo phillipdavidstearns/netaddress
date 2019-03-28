@@ -5,7 +5,7 @@ A simple tool to easily fetch network addresses. Made for Mac OSX 10.13+.
 Written by Phillip David Stearns 2018
 
 ## Installation
-Clone or download and unzip into /usr/local/etc directory. From the commandline (requires git):
+Clone or download and unzip into /usr/local/opt directory. From the commandline (requires git):
 
 ```
 cd /usr/local/opt
