@@ -8,23 +8,23 @@ Written by Phillip David Stearns 2018
 Clone or download and unzip into /usr/local/etc directory. From the commandline (requires git):
 
 ```
-cd /usr/local/etc
+cd /usr/local/opt
 git clone https://github.com/phillipdavidstearns/netaddress.git
 ```
 
 Make the script executable:
 
 ```
-chmod +x /usr/local/etc/netaddress/netaddress.sh
+chmod +x /usr/local/opt/netaddress/netaddress.sh
 ```
 
 Create a symbolic link to your executable `$PATH`:
 
 ```
-ln -s /usr/local/etc/netaddress/netaddress.sh /usr/local/bin/netaddress
+ln -s /usr/local/opt/netaddress/netaddress.sh /usr/local/bin/netaddress
 ```
 
-You should no be able to execute the script with the `netaddress` command from the terminal.
+You should now be able to execute the script with the `netaddress` command from the terminal.
 
 ## Usage
 If you run `netaddress` without arguments, it'll print basic usage instructions to the terminal. Get the full help message by running `netaddress -h`.
