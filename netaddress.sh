@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #   netaddress.sh
 #   a script to easily find usefull wireless network addresses
